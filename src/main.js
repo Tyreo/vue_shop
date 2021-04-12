@@ -6,8 +6,21 @@ import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
 import { Message } from 'element-ui'
 import axios from 'axios'
-Vue.prototype.$http = axios
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+// 请求拦截器
+axios.interceptors.request.use(
+  config => {
+    // 每次发送请求之前判断vuex中是否存在token
+    // 如果存在，则统一在http请求的header都加上token，这样后台根据token判断你的登录情况
+    // 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断
+    const TOKEN = window.sessionStorage.getItem('TOKEN')
+    TOKEN && (config.headers.Authorization = TOKEN)
+    return config
+  },
+  error => {
+    return Promise.error(error)
+  }
+)
 axios.interceptors.response.use(
   response => {
     // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
@@ -53,6 +66,7 @@ axios.interceptors.response.use(
     }
   }
 )
+Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 new Vue({

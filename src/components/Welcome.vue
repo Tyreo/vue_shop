@@ -14,8 +14,6 @@
             background-color="#333744"
             text-color="#fff"
             unique-opened
-            router
-            :default-active="activePath"
             :collapse="isClllapse"
             :collapse-transition="false"
             active-text-color="#409eff">
@@ -24,7 +22,7 @@
                 <i :class="iconObj[item.id]"></i>
                 <span>{{item.authName}}</span>
               </template>
-                <el-menu-item @click="saveNavState('/' + subItem.path)" v-for="(subItem, index) in item.children" :key="index" :index="'/' + subItem.path">
+                <el-menu-item v-for="(subItem, index) in item.children" :key="index" :index="index + ''">
                   <template slot="title">
                     <i class="el-icon-menu"></i>
                     <span>{{subItem.authName}}</span>
@@ -43,110 +41,6 @@
 export default {
   data () {
     return {
-      res: {
-        data: [
-          {
-            id: 125,
-            authName: '用户管理',
-            path: 'users',
-            children: [
-              {
-                id: 110,
-                authName: '用户列表',
-                path: 'users',
-                children: [],
-                order: null
-              }
-            ],
-            order: 1
-          },
-          {
-            id: 103,
-            authName: '权限管理',
-            path: 'rights',
-            children: [
-              {
-                id: 111,
-                authName: '角色列表',
-                path: 'roles',
-                children: [],
-                order: null
-              },
-              {
-                id: 112,
-                authName: '权限列表',
-                path: 'rights',
-                children: [],
-                order: null
-              }
-            ],
-            order: 2
-          },
-          {
-            id: 101,
-            authName: '商品管理',
-            path: 'goods',
-            children: [
-              {
-                id: 104,
-                authName: '商品列表',
-                path: 'goods',
-                children: [],
-                order: 1
-              },
-              {
-                id: 115,
-                authName: '分类参数',
-                path: 'params',
-                children: [],
-                order: 2
-              },
-              {
-                id: 121,
-                authName: '商品分类',
-                path: 'categories',
-                children: [],
-                order: 3
-              }
-            ],
-            order: 3
-          },
-          {
-            id: 102,
-            authName: '订单管理',
-            path: 'orders',
-            children: [
-              {
-                id: 107,
-                authName: '订单列表',
-                path: 'orders',
-                children: [],
-                order: null
-              }
-            ],
-            order: 4
-          },
-          {
-            id: 145,
-            authName: '数据统计',
-            path: 'reports',
-            children: [
-              {
-                id: 146,
-                authName: '数据报表',
-                path: 'reports',
-                children: [],
-                order: null
-              }
-            ],
-            order: 5
-          }
-        ],
-        meta: {
-          msg: '获取菜单列表成功',
-          status: 200
-        }
-      },
       menuLists: [],
       iconObj: {
         125: 'iconfont icon-user',
@@ -155,13 +49,11 @@ export default {
         145: 'iconfont icon-baobiao',
         102: 'iconfont icon-danju'
       },
-      isClllapse: false,
-      activePath: ''
+      isClllapse: false
     }
   },
   created () {
     this.getMenuList()
-    this.activePath = sessionStorage.getItem('activePath')
   },
   methods: {
     loginOut () {
@@ -179,10 +71,6 @@ export default {
     },
     toggleCollapse () {
       this.isClllapse = !this.isClllapse
-    },
-    saveNavState (avtive) {
-      sessionStorage.setItem('activePath', avtive)
-      this.activePath = avtive
     }
   }
 }
