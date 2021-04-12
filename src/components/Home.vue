@@ -1,45 +1,62 @@
 <template>
-    <div class="home-container">
-        <el-button type="info" @click="loginOut">退出</el-button>
-    </div>
+    <el-container class="home-container">
+      <el-header class="home-header">
+        <div class="header-title">
+          <img class="header-icon" src="../assets/heima.png" alt="tupian">
+          <span class="header-name">电商后台管理系统</span>
+        </div>
+        <el-button type="info" class="header-button">退出</el-button>
+      </el-header>
+      <el-container>
+        <el-aside width="200px">
+          <el-menu
+            default-active="2"
+            class="el-menu-vertical-demo"
+            @open="handleOpen"
+            @close="handleClose"
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b">
+            <el-submenu index="1">
+              <template slot="title">
+                <i class="el-icon-location"></i>
+                <span>导航一</span>
+              </template>
+              <el-menu-item-group>
+                <template slot="title">分组一</template>
+                <el-menu-item index="1-1">选项1</el-menu-item>
+                <el-menu-item index="1-2">选项2</el-menu-item>
+              </el-menu-item-group>
+              <el-menu-item-group title="分组2">
+                <el-menu-item index="1-3">选项3</el-menu-item>
+              </el-menu-item-group>
+              <el-submenu index="1-4">
+                <template slot="title">选项4</template>
+                <el-menu-item index="1-4-1">选项1</el-menu-item>
+              </el-submenu>
+            </el-submenu>
+            <el-menu-item index="2">
+              <i class="el-icon-menu"></i>
+              <span slot="title">导航二</span>
+            </el-menu-item>
+            <el-menu-item index="3" disabled>
+              <i class="el-icon-document"></i>
+              <span slot="title">导航三</span>
+            </el-menu-item>
+            <el-menu-item index="4">
+              <i class="el-icon-setting"></i>
+              <span slot="title">导航四</span>
+            </el-menu-item>
+          </el-menu>
+        </el-aside>
+        <el-main>Main</el-main>
+      </el-container>
+    </el-container>
 </template>
 <script>
 export default {
   data () {
-    return {
-      loginForm: {
-        username: 'admin',
-        password: '123456'
-      },
-      loginRules: {
-        username: [
-          {
-            required: true,
-            message: '请输入登录名',
-            trigger: 'blur'
-          },
-          {
-            min: 3,
-            max: 10,
-            message: '长度在3到10个字符',
-            trigger: 'blur'
-          }
-        ],
-        password: [
-          {
-            required: true,
-            message: '请输入登录密码',
-            trigger: 'blur'
-          },
-          {
-            min: 6,
-            max: 12,
-            message: '长度在6到12个字符',
-            trigger: 'blur'
-          }
-        ]
-      }
-    }
+    return {}
   },
   methods: {
     loginOut () {
@@ -50,48 +67,29 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    .login-container {
-        height: 100%;
-        background-color: #2b4b6b;
+  .el-header {
+    background-color: #373d41;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    color: #fff;
+    > div {
+      display: flex;
+      align-items: center;
+      > span {
+        margin-left: 10px;
+      }
     }
-    .login-box {
-        width: 450px;
-        height: 300px;
-        background-color: #fff;
-        border-radius: 3px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    .avatar-box {
-        height: 130px;
-        width: 130px;
-        border: 1px solid #eee;
-        border-radius: 50%;
-        padding: 10px;
-        box-shadow: 0 0 10px #ddd;
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #fff;
-        img {
-            height: 100%;
-            width: 100%;
-            border-radius: 50%;
-            background-color: #eee;
-        }
-    }
-    .form-box {
-        position: absolute;
-        left: 0;
-        top: 100px;
-        padding: 20px;
-        box-sizing: border-box;
-        width: 100%;
-    }
-    .btns {
-        display: flex;
-        justify-content: flex-end;
-    }
+  }
+  .el-aside {
+    background-color: #333744;
+  }
+  .el-main {
+    background-color: #eaedf1;
+  }
+  .home-container {
+    width: 100%;
+    height: 100%;
+  }
 </style>
