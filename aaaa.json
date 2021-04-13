@@ -1,0 +1,65 @@
+{
+  "files.associations": {
+    "*.ttss": "css",
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript",
+    "*.swan": "wxml"
+  },
+  "emmet.includeLanguages": {
+    "ttml": "html",
+    "wxml": "html"
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "git.autofetch": true,
+  "editor.fontSize": 16,
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "editor.tabSize": 2,
+  "eslint.format.enable": true,
+  "git.enableSmartCommit": true,
+  "minapp-vscode.disableAutoConfig": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 0,
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "vsicons.dontShowNewVersionMessage": true,
+  "minapp-vscode.prettier": {
+    "useTabs": false,
+    "tabWidth": 2,
+    "printWidth": 100,
+    "singleQuote": false
+  },
+  "editor.formatOnSave": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "wrap_attributes": "force-expand-multiline"
+    },
+    "prettyhtml": {
+      "printWidth": 100,
+      "singleQuote": false,
+      "wrapAttributes": false,
+      "sortAttributes": false
+    }
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "beautify.ignore": ""
+}

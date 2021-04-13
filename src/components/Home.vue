@@ -5,20 +5,38 @@
         <img class="header-icon" src="../assets/heima.png" alt="tupian" />
         <span class="header-name">电商后台管理系统</span>
       </div>
-      <el-button type="info" @click="loginOut" class="header-button">退出</el-button>
+      <el-button type="info" @click="loginOut" class="header-button"
+        >退出</el-button
+      >
     </el-header>
     <el-container>
       <el-aside :width="isClllapse ? '64px' : '200px'">
         <div class="toggle-button" @click="toggleCollapse">|||</div>
-        <el-menu background-color="#333744" text-color="#fff" unique-opened router :default-active="activePath"
-          :collapse="isClllapse" :collapse-transition="false" active-text-color="#409eff">
-          <el-submenu v-for="(item, index) in menuLists" :key="index" :index="index + ''">
+        <el-menu
+          background-color="#333744"
+          text-color="#fff"
+          unique-opened
+          router
+          :default-active="activePath"
+          :collapse="isClllapse"
+          :collapse-transition="false"
+          active-text-color="#409eff"
+        >
+          <el-submenu
+            v-for="(item, index) in menuLists"
+            :key="index"
+            :index="index + ''"
+          >
             <template slot="title">
               <i :class="iconObj[item.id]"></i>
               <span>{{ item.authName }}</span>
             </template>
-            <el-menu-item @click="saveNavState('/' + subItem.path)" v-for="(subItem, index) in item.children"
-              :key="index" :index="'/' + subItem.path">
+            <el-menu-item
+              @click="saveNavState('/' + subItem.path)"
+              v-for="(subItem, index) in item.children"
+              :key="index"
+              :index="'/' + subItem.path"
+            >
               <template slot="title">
                 <i class="el-icon-menu"></i>
                 <span>{{ subItem.authName }}</span>

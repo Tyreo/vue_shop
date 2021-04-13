@@ -4,12 +4,25 @@
       <div class="avatar-box">
         <img src="../assets/logo.png" alt="" />
       </div>
-      <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" label-width="0px" class="form-box">
+      <el-form
+        ref="loginFormRef"
+        :model="loginForm"
+        :rules="loginRules"
+        label-width="0px"
+        class="form-box"
+      >
         <el-form-item prop="username">
-          <el-input v-model="loginForm.username" prefix-icon="iconfont icon-user"></el-input>
+          <el-input
+            v-model="loginForm.username"
+            prefix-icon="iconfont icon-user"
+          ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input v-model="loginForm.password" type="password" prefix-icon="iconfont icon-3702mima"></el-input>
+          <el-input
+            v-model="loginForm.password"
+            type="password"
+            prefix-icon="iconfont icon-3702mima"
+          ></el-input>
         </el-form-item>
         <el-form-item class="btns">
           <el-button type="primary" @click="login">登陆</el-button>
